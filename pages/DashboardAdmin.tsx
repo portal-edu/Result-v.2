@@ -181,33 +181,28 @@ const DashboardAdmin: React.FC = () => {
   };
 
   const getBaseUrl = () => {
-      // Robust URL cleaner to prevent "Double URL" issues in all environments
+      // 1. Get the current browser URL (e.g., https://niyas.github.io/Results-v.2/#/dashboard)
       let url = window.location.href;
 
-      // 1. Remove 'blob:' prefix (Common in StackBlitz previews)
+      // 2. Remove 'blob:' if present (StackBlitz Preview fix)
       if (url.startsWith('blob:')) {
           url = url.replace('blob:', '');
       }
 
-      // 2. Remove the Hash (#) and everything after it
-      // This is crucial. If we are at .../#/dashboard, we want just the base .../
-      const hashIndex = url.indexOf('#');
-      if (hashIndex !== -1) {
-          url = url.substring(0, hashIndex);
+      // 3. CRITICAL: Split by '#' to isolate the Base Path from the Hash Route
+      // This ensures that if the site is at "https://domain.com/subdir/", we capture "/subdir/" correctly.
+      const parts = url.split('#');
+      let baseUrl = parts[0];
+
+      // 4. Remove any query params that might be attached to the base url (e.g. /?code=123#)
+      baseUrl = baseUrl.split('?')[0];
+
+      // 5. Remove trailing slash to ensure clean joining later
+      if (baseUrl.endsWith('/')) {
+          baseUrl = baseUrl.slice(0, -1);
       }
 
-      // 3. Remove any Query parameters (?) that might exist BEFORE the hash
-      const queryIndex = url.indexOf('?');
-      if (queryIndex !== -1) {
-          url = url.substring(0, queryIndex);
-      }
-
-      // 4. Remove trailing slash to ensure clean append later
-      if (url.endsWith('/')) {
-          url = url.slice(0, -1);
-      }
-
-      return url;
+      return baseUrl;
   };
 
   const handleCopyLink = (link: string, type: 'portal' | 'reg') => {

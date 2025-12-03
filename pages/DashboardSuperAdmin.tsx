@@ -1,9 +1,10 @@
 
+
 import React, { useEffect, useState } from 'react';
 import { GlassCard, GlassButton } from '../components/GlassUI';
 import { api } from '../services/api';
 import { SchoolConfig } from '../types';
-import { LayoutDashboard, Users, Shield, Trash2, Crown, Search, Building2, CheckCircle, XCircle, CreditCard, RefreshCw } from 'lucide-react';
+import { LayoutDashboard, Users, Shield, Trash2, Crown, Search, Building2, CheckCircle, XCircle, CreditCard, RefreshCw, Server } from 'lucide-react';
 
 const DashboardSuperAdmin: React.FC = () => {
     const [schools, setSchools] = useState<SchoolConfig[]>([]);
@@ -76,6 +77,11 @@ const DashboardSuperAdmin: React.FC = () => {
         pending: pendingRequests.length
     };
 
+    const getSystemHost = () => {
+        // Safe check for current URL minus the hash
+        return window.location.href.split('#')[0].replace(/\/$/, "");
+    };
+
     return (
         <div className="pb-20 animate-fade-in-up">
             <div className="mb-8 flex justify-between items-end">
@@ -127,6 +133,20 @@ const DashboardSuperAdmin: React.FC = () => {
                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{stats.free}</h3>
                     </div>
                 </GlassCard>
+            </div>
+
+            {/* System Info Banner */}
+            <div className="mb-8 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                    <Server className="w-5 h-5 text-slate-500"/>
+                    <span className="text-sm text-slate-600 dark:text-slate-300 font-medium">System Host URL Detected:</span>
+                    <span className="text-sm font-mono bg-white dark:bg-slate-900 px-2 py-1 rounded text-blue-600 dark:text-blue-400">
+                        {getSystemHost()}
+                    </span>
+                </div>
+                <div className="text-xs text-slate-400">
+                    Auto-detected from current browser location
+                </div>
             </div>
 
             {/* TABS */}
