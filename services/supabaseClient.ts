@@ -6,8 +6,8 @@ import { createClient } from '@supabase/supabase-js';
 // ------------------------------------------------------------------
 // Database connection removed. Please provide new keys or use mock mode.
 
-const DEFAULT_URL = ''; 
-const DEFAULT_KEY = ''; 
+const DEFAULT_URL = 'https://eannpgaknjctmcrhhnqw.supabase.co'; 
+const DEFAULT_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVhbm5wZ2FrbmpjdG1jcmhobnF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NTk4MjYsImV4cCI6MjA4MDIzNTgyNn0.zPI39Lr7vAgfs9J6FEC8SiQ1fyWdE9bvnVb674dpbeE'; 
 
 // ------------------------------------------------------------------
 
