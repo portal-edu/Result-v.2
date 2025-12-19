@@ -3,53 +3,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EduResult Pro | Official Portal</title>
+    <link rel="manifest" href="/assets/manifest-0vmX6ssT.json">
+    <meta name="theme-color" content="#020617">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-blue: #3b82f6;
-            --surface-dark: #020617;
+            --brand-primary: #3b82f6;
+            --surface-base: #020617;
+            --surface-elevated: #0f172a;
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--surface-dark);
-            color: #f8fafc;
+            background: var(--surface-base);
+            color: #e2e8f0;
             -webkit-tap-highlight-color: transparent;
-            letter-spacing: -0.011em;
+            letter-spacing: -0.01em;
+            overflow-x: hidden;
+            overscroll-behavior-y: contain;
         }
         .font-display {
             font-family: 'Plus Jakarta Sans', sans-serif;
             letter-spacing: -0.02em;
         }
-        .glass {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
         }
-        .glass-hover:hover {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            transform: translateY(-2px);
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.2) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-glow:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(30, 41, 59, 0.5);
+            transform: translateY(-2px);
         }
-        /* Custom Scrollbar for Pro Look */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--surface-base); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
         
-        @keyframes subtle-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float {
-            animation: subtle-float 6s infinite ease-in-out;
+        @media (max-width: 640px) {
+            .mobile-padding { padding-bottom: 100px; }
         }
     </style>
 
@@ -66,7 +68,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-D_DcV9fT.js"></script>
+  <script type="module" crossorigin src="/assets/index-B15Juynb.js"></script>
 </head>
 <body>
     <div id="root"></div>
